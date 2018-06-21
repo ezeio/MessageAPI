@@ -7,3 +7,9 @@ Feature: Add message
     When: I add the message
     Then: I should receive an identifier of the message
     And: the identifier should uniquely identify the added message
+
+
+  Scenario: Creating a new message with an empty message
+    Given: I have an empty message
+    When: I add the message
+    Then: I should be informed that the message is empty
