@@ -1,6 +1,7 @@
 package com.message.app.messageapi.service;
 
 import com.message.app.messageapi.exception.MessageNotFoundException;
+import com.message.app.messageapi.model.Message;
 import com.message.app.messageapi.repository.MessageRepository;
 import com.message.app.messageapi.service.impl.MessageServiceImpl;
 import org.junit.After;
@@ -10,13 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import com.message.app.messageapi.model.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -41,11 +40,10 @@ public class MessageServiceTest {
     }
 
     @Test
-    public void createMessageWithValidProperties(){
+    public void createMessageWithValidProperties() {
 
         // Given
         Message message = new Message("FIFA", "The world cup will begin next week during the round of 16");
-        assertTrue(messageRepository != null);
         when(messageRepository.save(message)).thenReturn(message);
 
         // When
@@ -56,7 +54,7 @@ public class MessageServiceTest {
     }
 
     @Test
-    public void whenAMessageIsRequested_thenTheMessageIsReturned(){
+    public void whenAMessageIsRequested_thenTheMessageIsReturned() {
         //Given
         Message message = new Message("Head line", "Boyota away!");
         Long id = new Long(1);
@@ -71,9 +69,9 @@ public class MessageServiceTest {
     }
 
     @Test(expected = MessageNotFoundException.class)
-    public void whenANoneExistentMessageIsRequested_thenExceptionIsThrown(){
+    public void whenANoneExistentMessageIsRequested_thenExceptionIsThrown() {
         //Given
-        Message message = new Message("Animal farm","That's an old book! find something new to read");
+        Message message = new Message("Animal farm", "That's an old book! find something new to read");
         Long id = new Long(2);
         when(messageRepository.findById(id)).thenReturn(Optional.empty());
 
@@ -82,19 +80,21 @@ public class MessageServiceTest {
     }
 
     @Test
-    public void whenIModifyAMessage_thenTheModifiedMessageIsReturned(){
+    public void whenIModifyAMessage_thenTheModifiedMessageIsReturned() {
 
         //Given
-            Message message1 = new Message("North England","It was raining here last night");
-            Message message2 = new Message("Egypt","The civilization");
+        Message message1 = new Message("North England", "It was raining here last night");
+        Long messageId = new Long(1);
 
         //When
 
-        when(messageRepository.save(message1)).thenReturn(message2);
+        when(messageRepository.updateMessageDetailsById(
+                "North England",
+                "It was raining here last night",
+                messageId)).thenReturn(1);
 
         //Then
         messageService.updateMessage(message1, new Long(1));
-
     }
 
 
