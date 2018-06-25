@@ -1,3 +1,4 @@
+@Getter
 Feature: I want to be able to modify a message
   By replacing the message with another message
 

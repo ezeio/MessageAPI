@@ -1,4 +1,3 @@
-@active
 Feature: I want to be able to create a new message and
   receive the identifier of the newly created message
 

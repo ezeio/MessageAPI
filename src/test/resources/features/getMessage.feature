@@ -1,3 +1,4 @@
+@Getter
 Feature: If I know the identifier of a message,
   I want to be able to retrieve the message that is linked to the identifier
 
