@@ -2,7 +2,7 @@ package com.message.app.messageapi.validation.impl;
 
 import com.message.app.messageapi.model.Message;
 
-public interface MessageService {
+public interface MessageValidator {
 
-    boolean isValid(Message message);
+    boolean isInvalid(Message message);
 }

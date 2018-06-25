@@ -1,5 +1,5 @@
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.*;
+import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         glue = {"stepDefinitions"},
         strict = true,
-        tags = "@active")
+        tags = "@Getter")
 public class CukesRunner {
 
 }
