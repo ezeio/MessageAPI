@@ -1,3 +1,4 @@
+@active
 Feature: I want to be able to create a new message and
   receive the identifier of the newly created message
 
@@ -10,5 +11,5 @@ Feature: I want to be able to create a new message and
 
   Scenario: Creating a new message with an empty message
     Given I have an empty message
-    When I add the message
+    When I add the empty message
     Then I should be informed that the message is empty
