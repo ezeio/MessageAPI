@@ -22,14 +22,12 @@ public class MessageController {
         return messageService.createMessage(message);
     }
 
-    @ResponseBody
     @GetMapping("/message/{messageId}")
     public Message getMessage(@PathVariable Long messageId) {
 
         return messageService.getMessage(messageId);
     }
 
-    @ResponseBody
     @GetMapping("/messages/")
     public List<Message> getMessages(
             @RequestParam(value = "limit") Integer limit) {
@@ -37,7 +35,7 @@ public class MessageController {
         return messageService.getMessages(limit);
     }
 
-    @PutMapping("/message/{messageId}")
+    @PutMapping(value = "/message/{messageId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity updateMessage(@RequestBody Message message, @PathVariable("messageId") Long id) {
         messageService.updateMessage(message, id);
         return ResponseEntity.ok("message updated");
