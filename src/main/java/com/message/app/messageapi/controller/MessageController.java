@@ -7,7 +7,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class MessageController {
@@ -17,9 +19,12 @@ public class MessageController {
 
 
     @PostMapping(value = "/message", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Long addMessage(@RequestBody Message message) {
+    public Map<String,Long> addMessage(@RequestBody Message message) {
 
-        return messageService.createMessage(message);
+        Long id = messageService.createMessage(message);
+        Map<String,Long> messageId = new HashMap<>();
+        messageId.put("id",id);
+        return messageId;
     }
 
     @GetMapping("/message/{messageId}")
