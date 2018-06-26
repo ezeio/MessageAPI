@@ -52,7 +52,7 @@ public class AddNewMessage extends SpringIntegrationTest {
                 .body(message2)
                 .when().post("/message")
                 .then()
-                .body(equalTo("2"))
+                .body("id",equalTo(2))
                 .statusCode(200);
     }
 
@@ -63,7 +63,7 @@ public class AddNewMessage extends SpringIntegrationTest {
                 .body(message3)
                 .when().post("/message")
                 .then()
-                .body(equalTo("3"))
+                .body("id",equalTo(3))
                 .statusCode(200);
 
         given()

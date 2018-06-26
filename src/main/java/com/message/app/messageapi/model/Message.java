@@ -3,10 +3,7 @@ package com.message.app.messageapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,9 +12,13 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private String message;
+    @Column(nullable = false)
     private String title;
+    @Column
     private LocalDateTime creationTime;
+    @Column
     private LocalDateTime modifiedTime;
 
     public Message(String title, String message) {
